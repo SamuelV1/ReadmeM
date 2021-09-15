@@ -2,14 +2,14 @@ import App from './App'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { theme } from 'resources/theme'
 
-export function Root() {
-    return (
-        <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <App />
-        </ThemeProvider>
+export function Root () {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
 
-    )
+  )
 }
 const GlobalStyle = createGlobalStyle`
     *{
