@@ -3,11 +3,15 @@ import styled, { css } from 'styled-components'
 function App() {
   return (
     <div className='App'>
-      <Tittle>We outside</Tittle>
+      <Tittle arroz='a'>We outside</Tittle>
     </div>
   )
 }
-const Tittle = styled.h1`${({ theme }) => css`
+type TittleProps = {
+  arroz: string
+}
+
+const Tittle = styled.h1<TittleProps>`${({ theme }) => css`
   background: ${theme.colors.primary};
   color: ${theme.colors.black};
 `}`
