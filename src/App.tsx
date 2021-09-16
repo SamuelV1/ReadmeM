@@ -1,19 +1,19 @@
-import styled, { css } from 'styled-components'
-// eslint-disable-next-line space-before-function-paren
+import styled from 'styled-components'
+
+import MainMenu from './Components/mainMenuAside'
+import Content from 'Components/Content'
 function App() {
   return (
-    <div className='App'>
-      <Tittle arroz='a'>We outside</Tittle>
-    </div>
+    <MainContainer className='App'>
+      <MainMenu />
+      <Content />
+    </MainContainer>
   )
 }
-type TittleProps = {
-  arroz: string
-}
 
-const Tittle = styled.h1<TittleProps>`${({ theme }) => css`
-  background: ${theme.colors.primary};
-  color: ${theme.colors.black};
-`}`
+const MainContainer = styled.div`
+  display: flex;
+  height: 100vh;
+`
 
 export default App
