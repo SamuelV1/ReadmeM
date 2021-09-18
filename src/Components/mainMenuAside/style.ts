@@ -43,6 +43,8 @@ export const DeleteButton = styled.button`
     padding: 8px 15px;
     width: 8px;
     display: none;
+    flex-direction: column;
+    align-items: flex-end;
 `
 export const Li = styled.li`${({ theme }) => css`
     list-style: none;
@@ -56,7 +58,7 @@ export const Li = styled.li`${({ theme }) => css`
         background: rgba(255, 255, 255, 0.05);
         border-radius: 6px;
         ${DeleteButton}{
-            display: block;
+            display: flex;
         }     
     }
 `}`

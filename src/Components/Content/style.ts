@@ -31,8 +31,6 @@ export const Input = styled.input`
   }
 `
 
-
-
 export const ContentSection = styled.div`
   display: flex;
   align-items: center;
