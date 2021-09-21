@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 // lib de local storage 
+import localforage, { setItem, getItem } from 'localforage'
 import MainMenu from './Components/mainMenuAside'
 import Content from 'Components/Content'
 // uid biblioteca que gera um uuid (Identificador Único Universal) pra usar como id do objeto
 import { v4 as uuidv4 } from 'uuid';
 import { useRef, useState, useEffect, ChangeEvent, MouseEvent } from 'react'
 import { File } from 'resources/files/type'
+import { promises } from 'fs';
+
 
 
 
@@ -13,6 +16,21 @@ function App() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [files, setFiles] = useState<File[]>([])
 
+  useEffect(() => {
+    async function StoragePrint() {
+      let dataStore = await localforage.getItem<File[]>('archives')
+      if (dataStore) {
+        setFiles(dataStore)
+        return
+      }
+      handleCreateNewFile()
+    }
+    StoragePrint()
+  }, [])
+
+  useEffect(() => {
+    localforage.setItem('archives', files)
+  }, [files])
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
@@ -59,6 +77,8 @@ function App() {
 
   const handleRemoveFile = (id: string) => {
     setFiles(files => files.filter(file => file.id !== id))
+
+
   }
 
   const handleSelectFile = (id: string) => (e: MouseEvent) => {
@@ -72,8 +92,8 @@ function App() {
     })))
   }
   const handleCreateNewFile = () => {
-    inputRef.current?.focus()
 
+    inputRef.current?.focus()
     setFiles(files => files
       .map(file => ({
         ...file,
@@ -86,6 +106,7 @@ function App() {
         active: true,
         status: 'saved',
       }))
+
   }
   const handleUpdateFileName = (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
     setFiles(files => files.map(file => {
@@ -99,6 +120,7 @@ function App() {
 
       return file
     }))
+
   }
 
   const handleUpdateFileContent = (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -113,6 +135,7 @@ function App() {
 
       return file
     }))
+
   }
 
 
