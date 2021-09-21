@@ -45,6 +45,7 @@ export const DeleteButton = styled.button`
     display: none;
     flex-direction: column;
     align-items: flex-end;
+    cursor: pointer;
 `
 export const Li = styled.li`${({ theme }) => css`
     list-style: none;

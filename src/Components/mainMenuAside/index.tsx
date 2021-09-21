@@ -1,9 +1,5 @@
 //imports de estilo (dessa forma fica mais limpo o arquivo e so preciso usar S.*Nome do Componente*
 import * as S from './style'
-// import use state
-import { useState } from 'react'
-// uid biblioteca que gera um uuid (Identificador Único Universal) pra usar como id do objeto
-import { v4 as uuidv4 } from 'uuid';
 // logo & e simbolo de pasta
 import addition from 'resources/assets/add-svgr.svg'
 import logo from 'resources/assets/Logo.png'

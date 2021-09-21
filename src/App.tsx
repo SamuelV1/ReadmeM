@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+// lib de local storage 
 import MainMenu from './Components/mainMenuAside'
 import Content from 'Components/Content'
 // uid biblioteca que gera um uuid (Identificador Único Universal) pra usar como id do objeto
@@ -12,6 +12,7 @@ import { File } from 'resources/files/type'
 function App() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [files, setFiles] = useState<File[]>([])
+
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
@@ -54,6 +55,7 @@ function App() {
 
     return () => clearTimeout(timer)
   }, [files])
+
 
   const handleRemoveFile = (id: string) => {
     setFiles(files => files.filter(file => file.id !== id))
