@@ -59,7 +59,7 @@ export const Article = styled.article`${({ theme }) => css`
   padding: 20px;
   position: relative;
   width: 40%;
-
+  overflow-x: scroll;
   &::before{
     background: ${theme.colors.gray};
     content: ' ';
