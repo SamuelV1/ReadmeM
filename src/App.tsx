@@ -7,15 +7,18 @@ import Content from 'Components/Content'
 import { v4 as uuidv4 } from 'uuid';
 import { useRef, useState, useEffect, ChangeEvent, MouseEvent } from 'react'
 import { File } from 'resources/files/type'
-import { promises } from 'fs';
+
 
 
 
 
 function App() {
+  // input ref pra mudar o foco automaticamente pro usuario
   const inputRef = useRef<HTMLInputElement>(null)
+  // linha fundamental pra o app
   const [files, setFiles] = useState<File[]>([])
 
+  // primeiro use effect pra guardar no local storage usando localforage
   useEffect(() => {
     async function StoragePrint() {
       let dataStore = await localforage.getItem<File[]>('archives')
@@ -27,11 +30,13 @@ function App() {
     }
     StoragePrint()
   }, [])
-
+  // um useeffect que roda sempre que as files(arquivo principal) muda pra manter o local storage atualizado
   useEffect(() => {
     localforage.setItem('archives', files)
   }, [files])
 
+
+  // use effect feito para mudar o status da file selecionada e fazer as animações baseado no tempo de idle do usuario
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
