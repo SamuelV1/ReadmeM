@@ -19,6 +19,21 @@ align-items: center;
 display: flex;
 height: ${headerHeight};
 `
+export const CopyButton = styled.button`${({ theme }) => css`
+position: absolute;
+  top: 0;
+  top: -5px;
+  border: 0;
+    right: -18px;
+  border-radius: 4px;
+  padding: 3px;
+  background-color: ${theme.colors.primary};
+  cursor:pointer;
+  :hover{
+    filter: brightness(0.8)
+  }
+`}`
+
 export const Input = styled.input`
   background: url(${FileActiveUrl}) left calc(50% - 1px) no-repeat;
   border: 0;
@@ -43,7 +58,7 @@ export const TextArea = styled.textarea`
   background: transparent;
   border: 0;
   font: 1.6em 'Inconsolata', 'Courir New', Courier, monospace;
-  width: 48%;
+  width: 108%;
   height: 100%;
   padding: 20px;
   resize: none;
@@ -52,6 +67,11 @@ export const TextArea = styled.textarea`
     outline:none;
   }
 `
+export const Wrapper = styled.div`
+position:relative;
+width: 48%;
+height: 100%;
+`
 export const Article = styled.article`${({ theme }) => css`
   background: transparent;
   height: 100%;
@@ -59,7 +79,8 @@ export const Article = styled.article`${({ theme }) => css`
   padding: 20px;
   position: relative;
   width: 40%;
-  overflow-x: scroll;
+  word-break: normal;
+  overflow-y: auto;
   &::before{
     background: ${theme.colors.gray};
     content: ' ';

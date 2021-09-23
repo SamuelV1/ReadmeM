@@ -66,9 +66,9 @@ export const Li = styled.li`${({ theme }) => css`
 export const NavBar = styled.nav`
     display: flex;
     align-items: center;
-    img{
-        padding: 8px;
-       
+    padding: 8px;
+    svg{
+        padding-right: 2px;
     }
     :hover{
         ${DeleteButton}{
@@ -161,15 +161,17 @@ font-style: normal;
 font-weight: normal;
 font-size: 13.5522px;
 line-height: 18px;
+/*Pra o svg dentro dele */
+svg{
+    width: 9.33px;
+  height: 9.33px;
+  margin-right: 0.75em;
+}
         cursor: pointer;
         transition: filter 0.2s;
     :hover{
         filter: brightness(0.7);
     }
 `}`
-export const PlusCross = styled.img`
-  width: 9.33px;
-  height: 9.33px;
-  margin-right: 0.75em;
-`
+
 

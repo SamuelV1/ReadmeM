@@ -5,6 +5,7 @@ import * as S from './style'
 import 'highlight.js/styles/github.css'
 import marked from 'marked'
 
+import { Copy } from 'ui/icons'
 
 import('highlight.js').then(hljs => {
   const h = hljs.default
@@ -35,6 +36,14 @@ export default function ContentContent({
   if (!file) {
     return null
   }
+  // um botão pra copiar o conteudo 
+  function CopyToClip() {
+    // o typescript me obrigou por um if pra caso o content for vazio :( 
+    if (file) {
+      navigator.clipboard.writeText(file.content)
+    }
+  }
+
   return (
     <S.ContentWrapper>
       <S.Header>
@@ -44,11 +53,16 @@ export default function ContentContent({
           autoFocus />
       </S.Header>
       <S.ContentSection>
-        <S.TextArea
-          placeholder='Digite aqui seu markdown'
-          value={file.content}
-          onChange={onUpdateFileContent(file.id)}
-        ></S.TextArea>
+        <S.Wrapper>
+          <S.TextArea
+            placeholder='Digite aqui seu markdown'
+            value={file.content}
+            onChange={onUpdateFileContent(file.id)}
+          ></S.TextArea>
+          <S.CopyButton onClick={CopyToClip}>
+            <Copy></Copy>
+          </S.CopyButton>
+        </S.Wrapper>
         <S.Article dangerouslySetInnerHTML={{ __html: marked(file.content) }}></S.Article>
       </S.ContentSection>
     </S.ContentWrapper>
