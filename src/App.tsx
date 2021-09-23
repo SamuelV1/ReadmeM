@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { useRef, useState, useEffect, ChangeEvent, MouseEvent } from 'react'
 import { File } from 'resources/files/type'
 
-
 /* decidi criar um valor inicial pra ser um readme de exemplo e linkar
  a documentação para o usuario mais novo
 */
@@ -20,7 +19,6 @@ const Initialfiles: File =
   active: true,
   status: 'saved',
 }
-
 
 function App() {
   // input ref pra mudar o foco automaticamente pro usuario
