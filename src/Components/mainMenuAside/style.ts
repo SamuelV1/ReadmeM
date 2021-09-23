@@ -47,8 +47,8 @@ export const DeleteButton = styled.button`
     align-items: flex-end;
     cursor: pointer;
 `
-export const Li = styled.li`${({ theme }) => css`
-    list-style: none;
+export const Li = styled.li`
+list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -62,7 +62,7 @@ export const Li = styled.li`${({ theme }) => css`
             display: flex;
         }     
     }
-`}`
+`
 export const NavBar = styled.nav`
     display: flex;
     align-items: center;
@@ -82,8 +82,6 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
 `
-
-
 
 export const SideMenu = styled.div`${({ theme }) => css`
   background: ${theme.colors.black};
@@ -173,5 +171,3 @@ svg{
         filter: brightness(0.7);
     }
 `}`
-
-

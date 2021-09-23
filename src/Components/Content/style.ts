@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/macro'
 import { FileActiveUrl } from 'ui/icons'
 
-
 const contentPadding = '24px'
 
 export const ContentWrapper = styled.div`${({ theme }) => css`
