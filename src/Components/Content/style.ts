@@ -23,6 +23,7 @@ export const CopyButton = styled.button`${({ theme }) => css`
 position: absolute;
   top: 0;
   top: -5px;
+  border: 0;
     right: -18px;
   border-radius: 4px;
   padding: 3px;

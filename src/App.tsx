@@ -9,14 +9,24 @@ import { useRef, useState, useEffect, ChangeEvent, MouseEvent } from 'react'
 import { File } from 'resources/files/type'
 
 
-
+/* decidi criar um valor inicial pra ser um readme de exemplo e linkar
+ a documentação para o usuario mais novo
+*/
+const Initialfiles: File =
+{
+  id: '0',
+  name: 'ReadMe',
+  content: "### aprenda markedown <br> # 📕: Caso vc não conheça markedown <br> leia a  [documentação](https://www.markdownguide.org/basic-syntax/)",
+  active: true,
+  status: 'saved',
+}
 
 
 function App() {
   // input ref pra mudar o foco automaticamente pro usuario
   const inputRef = useRef<HTMLInputElement>(null)
   // linha fundamental pra o app
-  const [files, setFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<File[]>([Initialfiles])
 
   // primeiro use effect pra guardar no local storage usando localforage
   useEffect(() => {
@@ -34,7 +44,16 @@ function App() {
   useEffect(() => {
     localforage.setItem('archives', files)
   }, [files])
+  // um use effect que te empurra url
+  useEffect(() => {
 
+    const selectedFile = files.find(file => file.active === true)
+
+    if (selectedFile) {
+      window.history.replaceState(null, '', `/file/${selectedFile.id}`)
+    }
+
+  }, [files])
 
   // use effect feito para mudar o status da file selecionada e fazer as animações baseado no tempo de idle do usuario
   useEffect(() => {
