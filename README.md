@@ -1,4 +1,6 @@
-﻿<h1 align="center">Markee</h1>
+﻿<h1 align="center">Markee </h1>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/25dbabfa-cbff-4567-90bd-55065a295119/deploy-status)](https://app.netlify.com/sites/vigorous-feynman-a2f85a/deploys)
 
 ## Descrição:
 markee e um webpage para criar arquivos de markdown de maneira simples e pratica.
