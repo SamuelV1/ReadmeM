@@ -1,6 +1,6 @@
 import { ChangeEvent, RefObject } from 'react'
 import { File } from 'resources/files/type'
-import styled, { css } from 'styled-components/macro'
+
 import * as S from './style'
 import 'highlight.js/styles/github.css'
 import marked from 'marked'
@@ -27,7 +27,7 @@ type ContentProps = {
   onUpdateFileContent: (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-export default function ContentContent({
+export default function ContentContent ({
   inputRef,
   file,
   onUpdateFileName,
@@ -36,9 +36,9 @@ export default function ContentContent({
   if (!file) {
     return null
   }
-  // um botão pra copiar o conteudo 
-  function CopyToClip() {
-    // o typescript me obrigou por um if pra caso o content for vazio :( 
+  // um botão pra copiar o conteudo
+  function CopyToClip () {
+    // o typescript me obrigou por um if pra caso o content for vazio :(
     if (file) {
       navigator.clipboard.writeText(file.content)
     }
@@ -47,10 +47,12 @@ export default function ContentContent({
   return (
     <S.ContentWrapper>
       <S.Header>
-        <S.Input ref={inputRef}
+        <S.Input
+          ref={inputRef}
           value={file.name}
           onChange={onUpdateFileName(file.id)}
-          autoFocus />
+          autoFocus
+        />
       </S.Header>
       <S.ContentSection>
         <S.Wrapper>
@@ -58,14 +60,15 @@ export default function ContentContent({
             placeholder='Digite aqui seu markdown'
             value={file.content}
             onChange={onUpdateFileContent(file.id)}
-          ></S.TextArea>
-          <S.CopyButton onClick={CopyToClip}>
-            <Copy></Copy>
+          />
+          <S.CopyButton
+            onClick={CopyToClip}
+          >
+            <Copy />
           </S.CopyButton>
         </S.Wrapper>
-        <S.Article dangerouslySetInnerHTML={{ __html: marked(file.content) }}></S.Article>
+        <S.Article dangerouslySetInnerHTML={{ __html: marked(file.content) }} />
       </S.ContentSection>
     </S.ContentWrapper>
   )
 }
-

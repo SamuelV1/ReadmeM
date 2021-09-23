@@ -2,7 +2,7 @@ import App from './App'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { theme } from 'resources/theme'
 
-export function Root() {
+export function Root () {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
