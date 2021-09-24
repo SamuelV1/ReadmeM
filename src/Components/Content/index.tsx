@@ -27,7 +27,7 @@ type ContentProps = {
   onUpdateFileContent: (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-export default function ContentContent ({
+export default function ContentContent({
   inputRef,
   file,
   onUpdateFileName,
@@ -36,8 +36,8 @@ export default function ContentContent ({
   if (!file) {
     return null
   }
-  // um botão pra copiar o conteudo
-  function CopyToClip () {
+  // um botão pra copiar o conteudo escrito (localizadon o canto da tela)
+  function CopyToClip() {
     // o typescript me obrigou por um if pra caso o content for vazio :(
     if (file) {
       navigator.clipboard.writeText(file.content)
