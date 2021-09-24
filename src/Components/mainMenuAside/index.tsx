@@ -7,13 +7,13 @@ import { File } from 'resources/files/type'
 // svgs
 import * as icon from 'ui/icons'
 type SidebarProps = {
-    files: File[]
-    onNewFile: () => void
-    onSelectFile: any
-    onRemoveFile: (id: string) => void
+  files: File[]
+  onNewFile: () => void
+  onSelectFile: any
+  onRemoveFile: (id: string) => void
 }
 
-export default function MainMenu ({
+export default function MainMenu({
   files,
   onNewFile,
   onSelectFile,

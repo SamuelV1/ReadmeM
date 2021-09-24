@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 // lib de local storage
 import localforage from 'localforage'
+// meus components 
 import MainMenu from './Components/mainMenuAside'
 import Content from 'Components/Content'
 // uid biblioteca que gera um uuid (Identificador Único Universal) pra usar como id do objeto
@@ -13,6 +14,7 @@ import { File } from 'resources/files/type'
 */
 const Initialfiles: File =
 {
+  // fiquei na duvida entre esse ser o arquivo de numero zero ou ter uma uuid propria
   id: '0',
   name: 'ReadMe',
   content: '### aprenda markedown <br> # 📕: Caso vc não conheça markedown <br> leia a  [documentação](https://www.markdownguide.org/basic-syntax/)',
@@ -20,21 +22,22 @@ const Initialfiles: File =
   status: 'saved',
 }
 
-function App () {
+function App() {
   // input ref pra mudar o foco automaticamente pro usuario
   const inputRef = useRef<HTMLInputElement>(null)
   // linha fundamental pra o app
   const [files, setFiles] = useState<File[]>([Initialfiles])
 
   // primeiro use effect pra guardar no local storage usando localforage
+  /* esse use effect roda inicialmente então eu removi a funcionalidade de criar uma nova pasta
+   sempre que for iniciado pra dessa maneira Na primeira vez que o usuario entrar ele vai ver o mini tutorial */
   useEffect(() => {
-    async function StoragePrint () {
+    async function StoragePrint() {
       const dataStore = await localforage.getItem<File[]>('archives')
       if (dataStore) {
         setFiles(dataStore)
         return
       }
-      handleCreateNewFile()
     }
     StoragePrint()
   }, [])
@@ -55,7 +58,7 @@ function App () {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
-    function updateStatus () {
+    function updateStatus() {
       const file = files.find(file => file.active === true)
 
       if (!file || file.status !== 'editing') {
@@ -170,6 +173,7 @@ function App () {
   )
 }
 
+// são 2 estilos simples então deixei ele aq msm
 const MainContainer = styled.div`
   display: flex;
   height: 100vh;
