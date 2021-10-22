@@ -5,7 +5,7 @@ import * as S from './style'
 import 'highlight.js/styles/github.css'
 import marked from 'marked'
 
-import { Copy } from 'ui/icons'
+import { Dowload } from 'ui/icons'
 
 import('highlight.js').then(hljs => {
   const h = hljs.default
@@ -36,11 +36,18 @@ export default function ContentContent({
   if (!file) {
     return null
   }
-  // um botão pra copiar o conteudo escrito (localizadon o canto da tela)
-  function CopyToClip() {
+  // um botão pra baixar o conteudo escrito (localizadon o canto da tela)
+  function SaveArchive() {
     // o typescript me obrigou por um if pra caso o content for vazio :(
     if (file) {
-      navigator.clipboard.writeText(file.content)
+      const element = document.createElement("a")
+
+      const fileS = new Blob([file.content], { type: "text/plain" })
+      element.href = URL.createObjectURL(fileS)
+      element.download = `${file.name}.md`
+      // firefox adaptor
+      document.body.appendChild(element)
+      element.click()
     }
   }
 
@@ -62,9 +69,9 @@ export default function ContentContent({
             onChange={onUpdateFileContent(file.id)}
           />
           <S.CopyButton
-            onClick={CopyToClip}
+            onClick={SaveArchive}
           >
-            <Copy />
+            <Dowload />
           </S.CopyButton>
         </S.Wrapper>
         <S.Article dangerouslySetInnerHTML={{ __html: marked(file.content) }} />

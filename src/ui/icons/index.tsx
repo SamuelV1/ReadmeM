@@ -6,5 +6,6 @@ export { ReactComponent as FileActive } from './file-active.svg'
 export { default as FileActiveUrl } from './file-active.svg'
 export { ReactComponent as Loading } from './loading.svg'
 export { ReactComponent as Plus } from './plus.svg'
-export { ReactComponent as Copy } from './copy.svg'
+export { ReactComponent as Dowload } from './Save.svg'
 export { ReactComponent as Add } from './add.svg'
+
