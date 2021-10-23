@@ -31,6 +31,9 @@ position: absolute;
   :hover{
     filter: brightness(0.8)
   }
+  svg{
+    height: 20px;
+  }
 `}`
 
 export const Input = styled.input`
